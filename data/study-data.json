@@ -100,15 +100,7 @@
       "category": "english",
       "color": "#F44336",
       "icon": "✍️",
-      "totalMinutes": 0,
-      "goals": [
-        {
-          "id": "eng-grammar-master",
-          "title": "英文法参考書 3周",
-          "targetHours": 60,
-          "status": "active"
-        }
-      ]
+      "totalMinutes": 0
     },
     "英語リーディング": {
       "name": "英語リーディング",
@@ -167,9 +159,24 @@
       "goals": []
     }
   },
+  "goals": [
+    {
+      "id": "eng-grammar-master",
+      "title": "英文法参考書 3周",
+      "targetHours": 60,
+      "status": "active",
+      "subject": "英語文法"
+    },
+    {
+      "id": "2025-first-semester-final",
+      "title": "2025-前期末",
+      "targetHours": null,
+      "status": "active"
+    }
+  ],
   "sessions": [
     {
-      "id": "session_20250822_001",
+      "id": 2,
       "timestamp": "2025-08-22T06:36:42.483Z",
       "subject": "数学C",
       "goalId": null,

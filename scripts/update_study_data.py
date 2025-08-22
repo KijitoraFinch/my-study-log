@@ -82,6 +82,7 @@ def main():
     issue_body = os.environ.get("ISSUE_BODY")
     issue_number = os.environ.get("ISSUE_NUMBER")
     created_at_str = os.environ.get("CREATED_AT")
+    issue_url = os.environ.get("ISSUE_URL")
 
     if not all([issue_title, issue_body, issue_number, created_at_str]):
         print("Error: Missing required environment variables.")
@@ -96,17 +97,17 @@ def main():
     # 新しい学習記録を作成
     new_log = {
         "id": int(issue_number),
-        "title": issue_title.replace("[学習記録] ", "").strip(),
-        "date": created_at.isoformat(),
+        "timestamp": created_at.isoformat(),
         "subject": parsed_data.get("subject"),
         "goalId": parsed_data.get("goalId"),
-        "duration": parsed_data.get("duration"),
+        "duration": parsed_data.get("duration", 0),
         "content": parsed_data.get("content"),
         "tags": parsed_data.get("tags", []),
         "materials": parsed_data.get("materials", []),
         "notes": parsed_data.get("notes"),
         "difficulty": parsed_data.get("difficulty"),
-        "satisfaction": parsed_data.get("satisfaction")
+        "satisfaction": parsed_data.get("satisfaction"),
+        "issueUrl": issue_url
     }
 
     # JSONファイルを読み込み、更新
@@ -115,12 +116,34 @@ def main():
         with open(json_path, "r", encoding="utf-8") as f:
             study_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        study_data = []
+        study_data = {
+            "version": "1.0",
+            "metadata": {"created": datetime.now().isoformat(), "totalSessions": 0, "totalMinutes": 0},
+            "subjects": {},
+            "goals": [],
+            "sessions": [],
+            "config": {},
+            "achievements": [],
+            "analytics": {}
+        }
 
-    study_data.append(new_log)
+    # 新しい学習記録をセッションに追加
+    study_data["sessions"].append(new_log)
     
-    # IDでソート
-    study_data.sort(key=lambda x: x["id"])
+    # セッションをIDでソート
+    study_data["sessions"].sort(key=lambda x: x.get("id", 0))
+
+    # メタデータを更新
+    study_data["metadata"]["totalSessions"] = len(study_data["sessions"])
+    total_minutes = sum(s.get("duration", 0) or 0 for s in study_data["sessions"])
+    study_data["metadata"]["totalMinutes"] = total_minutes
+    study_data["metadata"]["lastUpdated"] = datetime.now().isoformat()
+
+    # 科目別の学習時間を更新
+    subject_name = new_log.get("subject")
+    duration = new_log.get("duration", 0) or 0
+    if subject_name and subject_name in study_data["subjects"]:
+        study_data["subjects"][subject_name]["totalMinutes"] = study_data["subjects"][subject_name].get("totalMinutes", 0) + duration
 
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(study_data, f, ensure_ascii=False, indent=2)
