@@ -1,0 +1,37 @@
+name: Update Issue Forms
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/study-data.json'
+  workflow_dispatch:
+
+jobs:
+  update-forms:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Update issue form options
+        id: update_script
+        run: python scripts/update_issue_template.py
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore(issue-forms): update goal options"
+          file_pattern: ".github/ISSUE_TEMPLATE/study_log.yml"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"

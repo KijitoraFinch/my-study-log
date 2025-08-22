@@ -30,11 +30,13 @@ body:
     validations:
       required: true
 
-  - type: input
+  - type: dropdown
     id: goalId
     attributes:
-      label: 関連ゴールID
-      description: (任意) 関連するゴールのIDを入力します。
+      label: 関連ゴール
+      description: (任意) 関連するゴールを選択してください。
+      options:
+        - "（自動更新されます）"
 
   - type: input
     id: duration
