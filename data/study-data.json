@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00Z",
-    "lastUpdated": "2025-08-22T15:28:40.572472",
-    "totalSessions": 2,
-    "totalMinutes": 55
+    "lastUpdated": "2025-08-22T16:20:20.444870",
+    "totalSessions": 3,
+    "totalMinutes": 80
   },
   "subjects": {
     "数学I": {
@@ -60,7 +60,7 @@
       "category": "japanese",
       "color": "#9C27B0",
       "icon": "📜📖",
-      "totalMinutes": 0,
+      "totalMinutes": 25,
       "goals": []
     },
     "古文": {
@@ -204,6 +204,22 @@
       "difficulty": null,
       "satisfaction": null,
       "issueUrl": "https://github.com/KijitoraFinch/study-log/issues/2"
+    },
+    {
+      "id": 3,
+      "timestamp": "2025-08-22T16:20:09+00:00",
+      "subject": "古文単語",
+      "goalId": null,
+      "duration": 25,
+      "content": "ネイティブスピーカーが全員死んでいる言語の単語を覚えた",
+      "tags": [
+        "_No response_"
+      ],
+      "materials": null,
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": "",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/3"
     }
   ],
   "config": {
