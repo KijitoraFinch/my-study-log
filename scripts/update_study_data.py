@@ -1,0 +1,132 @@
+
+
+import json
+import os
+import re
+from datetime import datetime
+
+def parse_issue_body(body):
+    """Issueの本文を解析して、各フィールドの値を抽出する"""
+    data = {}
+    # シンプルなキーと値の抽出
+    fields = [
+        "subject", "goalId", "duration", "tags", "difficulty", "satisfaction"
+    ]
+    for field in fields:
+        match = re.search(f"### {get_label_for_field(field)}\s*\n\s*(.*?)\s*\n", body, re.DOTALL)
+        if match:
+            data[field] = match.group(1).strip()
+
+    # 複数行のフィールド
+    multi_line_fields = ["content", "materials", "notes"]
+    for field in multi_line_fields:
+        match = re.search(f"### {get_label_for_field(field)}\s*\n\s*(.*?)(?=\n###|$)", body, re.DOTALL)
+        if match:
+            value = match.group(1).strip()
+            if value == "_No response_" or not value:
+                data[field] = None
+            else:
+                data[field] = value
+    
+    # 数値への変換
+    for field in ["duration", "difficulty", "satisfaction"]:
+        if data.get(field):
+            try:
+                data[field] = int(data[field])
+            except (ValueError, TypeError):
+                data[field] = None
+
+    # タグをリストに変換
+    if data.get("tags"):
+        data["tags"] = [tag.strip() for tag in data["tags"].split(",") if tag.strip()]
+    else:
+        data["tags"] = []
+
+    # 教材をパース
+    if data.get("materials"):
+        data["materials"] = parse_materials(data["materials"])
+
+    return data
+
+def get_label_for_field(field_id):
+    """issue_template.ymlのIDからラベル文字列を取得する"""
+    labels = {
+        "subject": "学習科目",
+        "goalId": "関連ゴールID",
+        "duration": "学習時間（分）",
+        "content": "学習内容",
+        "tags": "タグ（カンマ区切り）",
+        "materials": "教材",
+        "notes": "メモ",
+        "difficulty": "難易度 \(1-5\)",
+        "satisfaction": "満足度 \(1-5\)"
+    }
+    return labels.get(field_id, "")
+
+def parse_materials(materials_text):
+    """教材のテキストを解析してリストに変換する"""
+    materials = []
+    for line in materials_text.strip().split('\n'):
+        parts = line.split(':', 2)
+        if len(parts) == 3:
+            materials.append({
+                "type": parts[0].strip(),
+                "name": parts[1].strip(),
+                "detail": parts[2].strip()
+            })
+    return materials
+
+def main():
+    # 環境変数から情報を取得
+    issue_title = os.environ.get("ISSUE_TITLE")
+    issue_body = os.environ.get("ISSUE_BODY")
+    issue_number = os.environ.get("ISSUE_NUMBER")
+    created_at_str = os.environ.get("CREATED_AT")
+
+    if not all([issue_title, issue_body, issue_number, created_at_str]):
+        print("Error: Missing required environment variables.")
+        return
+
+    # 日付をISO 8601形式にパース
+    created_at = datetime.fromisoformat(created_at_str.replace("Z", "+00:00"))
+
+    # Issueからデータを解析
+    parsed_data = parse_issue_body(issue_body)
+
+    # 新しい学習記録を作成
+    new_log = {
+        "id": int(issue_number),
+        "title": issue_title.replace("[学習記録] ", "").strip(),
+        "date": created_at.isoformat(),
+        "subject": parsed_data.get("subject"),
+        "goalId": parsed_data.get("goalId"),
+        "duration": parsed_data.get("duration"),
+        "content": parsed_data.get("content"),
+        "tags": parsed_data.get("tags", []),
+        "materials": parsed_data.get("materials", []),
+        "notes": parsed_data.get("notes"),
+        "difficulty": parsed_data.get("difficulty"),
+        "satisfaction": parsed_data.get("satisfaction")
+    }
+
+    # JSONファイルを読み込み、更新
+    json_path = "data/study-data.json"
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            study_data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        study_data = []
+
+    study_data.append(new_log)
+    
+    # IDでソート
+    study_data.sort(key=lambda x: x["id"])
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(study_data, f, ensure_ascii=False, indent=2)
+    
+    print(f"Successfully added log #{issue_number} to {json_path}")
+
+if __name__ == "__main__":
+    main()
+

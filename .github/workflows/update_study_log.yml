@@ -1,0 +1,44 @@
+
+name: Update Study Log
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  update-json-from-issue:
+    # ラベルが 'study-log' であり、Issue作成者がコラボレーター以上の場合のみ実行
+    if: >
+      github.event.label.name == 'study-log' &&
+      contains(fromJSON('["MEMBER", "OWNER", "COLLABORATOR"]'), github.event.issue.author_association)
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      contents: write # リポジトリへの書き込み権限
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Update study-data.json
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          CREATED_AT: ${{ github.event.issue.created_at }}
+        run: |
+          python scripts/update_study_data.py
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs(data): update study data from issue #${{ github.event.issue.number }}"
+          file_pattern: data/study-data.json
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"

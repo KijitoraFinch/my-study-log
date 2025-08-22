@@ -1,0 +1,207 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "created": "2025-08-22T00:00:00Z",
+    "lastUpdated": "2025-08-22T06:36:42.483Z",
+    "totalSessions": 1,
+    "totalMinutes": 25
+  },
+  "subjects": {
+    "数学I": {
+      "name": "数学I",
+      "category": "math",
+      "color": "#4CAF50",
+      "icon": "📈",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "数学II": {
+      "name": "数学II",
+      "category": "math",
+      "color": "#4CAF50",
+      "icon": "📈",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "数学III": {
+      "name": "数学III",
+      "category": "math",
+      "color": "#4CAF50",
+      "icon": "📈",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "数学A": {
+      "name": "数学A",
+      "category": "math",
+      "color": "#2196F3",
+      "icon": "🎲",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "数学B": {
+      "name": "数学B",
+      "category": "math",
+      "color": "#2196F3",
+      "icon": "➡️",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "数学C": {
+      "name": "数学C",
+      "category": "math",
+      "color": "#2196F3",
+      "icon": "🌀",
+      "totalMinutes": 25,
+      "goals": []
+    },
+    "古文単語": {
+      "name": "古文単語",
+      "category": "japanese",
+      "color": "#9C27B0",
+      "icon": "📜📖",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "古文": {
+      "name": "古文",
+      "category": "japanese",
+      "color": "#9C27B0",
+      "icon": "📜",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "漢文": {
+      "name": "漢文",
+      "category": "japanese",
+      "color": "#673AB7",
+      "icon": "🖋️",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "英単語": {
+      "name": "英単語",
+      "category": "english",
+      "color": "#F44336",
+      "icon": "🇬🇧📖",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "英語": {
+      "name": "英語",
+      "category": "english",
+      "color": "#F44336",
+      "icon": "🇬🇧",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "英語文法": {
+      "name": "英語文法",
+      "category": "english",
+      "color": "#F44336",
+      "icon": "✍️",
+      "totalMinutes": 0,
+      "goals": [
+        {
+          "id": "eng-grammar-master",
+          "title": "英文法参考書 3周",
+          "targetHours": 60,
+          "status": "active"
+        }
+      ]
+    },
+    "英語リーディング": {
+      "name": "英語リーディング",
+      "category": "english",
+      "color": "#E91E63",
+      "icon": "📚",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "英語リスニング": {
+      "name": "英語リスニング",
+      "category": "english",
+      "color": "#E91E63",
+      "icon": "🎧",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "英語ライティング": {
+      "name": "英語ライティング",
+      "category": "english",
+      "color": "#E91E63",
+      "icon": "📝",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "地学基礎/地学": {
+      "name": "地学基礎/地学",
+      "category": "science",
+      "color": "#00BCD4",
+      "icon": "🌍",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "化学基礎/化学": {
+      "name": "化学基礎/化学",
+      "category": "science",
+      "color": "#009688",
+      "icon": "🧪",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "歴史総合": {
+      "name": "歴史総合",
+      "category": "social",
+      "color": "#FF9800",
+      "icon": "🏛️",
+      "totalMinutes": 0,
+      "goals": []
+    },
+    "公共": {
+      "name": "公共",
+      "category": "social",
+      "color": "#FFC107",
+      "icon": "⚖️",
+      "totalMinutes": 0,
+      "goals": []
+    }
+  },
+  "sessions": [
+    {
+      "id": "session_20250822_001",
+      "timestamp": "2025-08-22T06:36:42.483Z",
+      "subject": "数学C",
+      "goalId": null,
+      "duration": 25,
+      "content": "このフィールドオプショナルにしたほうが良い",
+      "tags": [],
+      "materials": [],
+      "notes": "",
+      "difficulty": null,
+      "satisfaction": null,
+      "issueUrl": "https://github.com/KijitoraFinch/study-log/issues/2"
+    }
+  ],
+  "config": {
+    "timezone": "Asia/Tokyo",
+    "defaultSessionLength": 60
+  },
+  "achievements": [],
+  "analytics": {
+    "weeklyMinutes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "monthlyMinutes": {},
+    "subjectDistribution": {},
+    "timeOfDayPattern": {},
+    "streakCount": 0,
+    "longestStreak": 0
+  }
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習記録ダッシュボード</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <style>
+        /* Uchu Color Palette (Light Theme) */
+        :root {
+            --bg: oklch(99.1% 0.005 280);
+            --fg: oklch(25% 0.02 280);
+            --bg-alt: oklch(95% 0.01 280);
+            --fg-alt: oklch(45% 0.015 280);
+
+            --red: oklch(65% 0.2 15);
+            --orange: oklch(70% 0.2 55);
+            --yellow: oklch(85% 0.2 95);
+            --green: oklch(65% 0.2 135);
+            --cyan: oklch(75% 0.2 175);
+            --blue: oklch(65% 0.2 255);
+            --purple: oklch(65% 0.2 295);
+            --magenta: oklch(65% 0.2 335);
+
+            --font-family-sans: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック Medium', 'Yu Gothic Medium', meiryo, sans-serif;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: var(--font-family-sans);
+            background-color: var(--bg);
+            color: var(--fg);
+            margin: 0;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--fg);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-alt);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px oklch(0 0 0 / 0.05);
+        }
+
+        .kpi-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .kpi {
+            background-color: var(--bg-alt);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px oklch(0 0 0 / 0.05);
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--blue);
+        }
+
+        .kpi-value small {
+            font-size: 1rem;
+            color: var(--fg-alt);
+        }
+
+        .kpi-label {
+            font-size: 1rem;
+            color: var(--fg-alt);
+            margin-top: 0.5rem;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--fg);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 0.5rem;
+        }
+
+        .session-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .session-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--bg);
+        }
+
+        .session-item:last-child {
+            border-bottom: none;
+        }
+
+        .session-subject {
+            font-weight: bold;
+            /* Color is now set dynamically by JavaScript */
+        }
+
+        .session-time {
+            color: var(--fg-alt);
+            font-size: 0.9rem;
+            margin-left: 1rem;
+        }
+
+        .session-duration {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>学習記録ダッシュボード</h1>
+        </header>
+
+        <main>
+            <div class="kpi-container">
+                <div class="kpi">
+                    <div id="total-minutes" class="kpi-value">--</div>
+                    <div class="kpi-label">総学習時間</div>
+                </div>
+                <div class="kpi">
+                    <div id="total-sessions" class="kpi-value">--</div>
+                    <div class="kpi-label">総セッション数</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="card">
+                    <h2>科目別学習時間</h2>
+                    <div id="subject-distribution-chart" class="chart-container"></div>
+                </div>
+                <div class="card">
+                    <h2>週間学習トレンド</h2>
+                    <div id="weekly-trend-chart" class="chart-container"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>最近の学習セッション</h2>
+                <ul id="recent-sessions" class="session-list">
+                    <!-- Sessions will be injected here by JavaScript -->
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // データを非同期で読み込む
+                const response = await fetch('./data/study-data.json');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const studyData = await response.json();
+                initializeDashboard(studyData);
+            } catch (error) {
+                console.error('データの読み込みに失敗しました:', error);
+                // エラーメッセージをユーザーに分かりやすく表示
+                const container = document.querySelector('.container');
+                if (container) {
+                    container.innerHTML = `<div style="text-align: center; padding: 2rem;">
+                        <h1><span style="font-size: 2.5rem;">😕</span><br>データの読み込みに失敗しました</h1>
+                        <p style="color: var(--fg-alt);"><code>data/study-data.json</code>が正しい場所に存在するか、JSONの形式が正しいか確認してください。</p>
+                        <p style="color: var(--fg-alt); font-size: 0.9rem;">エラー詳細: ${error.message}</p>
+                        </div>`;
+                }
+            }
+        });
+
+        function initializeDashboard(data) {
+            const uchuColors = {
+                red: 'oklch(65% 0.2 15)', orange: 'oklch(70% 0.2 55)',
+                yellow: 'oklch(85% 0.2 95)', green: 'oklch(65% 0.2 135)',
+                cyan: 'oklch(75% 0.2 175)', blue: 'oklch(65% 0.2 255)',
+                purple: 'oklch(65% 0.2 295)', magenta: 'oklch(65% 0.2 335)'
+            };
+            const colorPalette = Object.values(uchuColors);
+            const categoryColors = {
+                'math': uchuColors.blue, 'japanese': uchuColors.purple,
+                'english': uchuColors.red, 'science': uchuColors.green,
+                'social': uchuColors.orange, 'default': 'oklch(45% 0.015 280)'
+            };
+
+            // --- 1. KPIの表示 ---
+            const totalMinutes = data.metadata.totalMinutes;
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+            document.getElementById('total-minutes').innerHTML = `${hours}<small>h</small> ${minutes}<small>m</small>`;
+            document.getElementById('total-sessions').textContent = data.metadata.totalSessions;
+
+            // --- 2. 科目別学習時間の円グラフ ---
+            const subjectChartDom = document.getElementById('subject-distribution-chart');
+            const subjectChart = echarts.init(subjectChartDom, 'light');
+            const subjectData = Object.values(data.subjects)
+                .filter(s => s.totalMinutes > 0)
+                .map(s => ({ value: s.totalMinutes, name: s.name }));
+
+            const subjectOption = {
+                tooltip: { trigger: 'item', formatter: '{b}: {c}分 ({d}%)' },
+                legend: { show: false },
+                series: [{
+                    name: '学習時間',
+                    type: 'pie',
+                    radius: ['45%', '75%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: { borderRadius: 10, borderColor: 'var(--bg-alt)', borderWidth: 4 },
+                    label: { show: true, position: 'outside', formatter: '{b}\n{d}%', color: 'var(--fg-alt)' },
+                    labelLine: { length: 15, length2: 15 },
+                    data: subjectData
+                }],
+                color: colorPalette
+            };
+            subjectChart.setOption(subjectOption);
+
+            // --- 3. 週間学習トレンドの棒グラフ ---
+            const weeklyChartDom = document.getElementById('weekly-trend-chart');
+            const weeklyChart = echarts.init(weeklyChartDom, 'light');
+            const weeklyOption = {
+                tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: '{c}分' },
+                xAxis: {
+                    type: 'category',
+                    data: ['日', '月', '火', '水', '木', '金', '土'],
+                    axisLine: { lineStyle: { color: 'var(--fg-alt)' } }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: { formatter: '{value} 分' },
+                    splitLine: { lineStyle: { color: 'var(--bg)', type: 'dashed' } }
+                },
+                series: [{
+                    data: data.analytics.weeklyMinutes,
+                    type: 'bar',
+                    itemStyle: { color: uchuColors.blue, barBorderRadius: [5, 5, 0, 0] },
+                    barWidth: '60%'
+                }],
+                grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
+            };
+            weeklyChart.setOption(weeklyOption);
+
+            // --- 4. 最近の学習セッションリスト ---
+            const sessionsList = document.getElementById('recent-sessions');
+            sessionsList.innerHTML = ''; // リストを初期化
+            const sortedSessions = data.sessions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            sortedSessions.slice(0, 5).forEach(session => {
+                const subjectInfo = data.subjects[session.subject];
+                if (!subjectInfo) return;
+
+                const category = subjectInfo.category || 'default';
+                const subjectColor = categoryColors[category] || categoryColors.default;
+                const localTime = new Date(session.timestamp).toLocaleString('ja-JP', {
+                    year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                });
+
+                const item = document.createElement('li');
+                item.className = 'session-item';
+                item.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <span class="session-subject" style="color: ${subjectColor};">${subjectInfo.icon} ${session.subject}</span>
+                        <span class="session-time">${localTime}</span>
+                    </div>
+                    <span class="session-duration">${session.duration}分</span>
+                `;
+                sessionsList.appendChild(item);
+            });
+
+            // ウィンドウリサイズ時にチャートをリサイズ
+            window.addEventListener('resize', () => {
+                subjectChart.resize();
+                weeklyChart.resize();
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+name: 学習記録フォーム
+description: 新しい学習内容を記録します。
+title: "[学習記録] "
+labels: ["study-log"]
+body:
+  - type: dropdown
+    id: subject
+    attributes:
+      label: 学習科目
+      description: 学習した科目を選択してください。
+      options:
+        - 数学I
+        - 数学II
+        - 数学III
+        - 数学A
+        - 数学B
+        - 数学C
+        - 古文単語
+        - 古文
+        - 漢文
+        - 英語
+        - 英語文法
+        - 英語リーディング
+        - 英語リスニング
+        - 英語ライティング
+        - 地学基礎/地学
+        - 化学基礎/化学
+        - 歴史総合
+        - 公共
+    validations:
+      required: true
+
+  - type: input
+    id: goalId
+    attributes:
+      label: 関連ゴールID
+      description: (任意) 関連するゴールのIDを入力します。
+
+  - type: input
+    id: duration
+    attributes:
+      label: 学習時間（分）
+      description: 学習した時間を分単位で入力してください。
+      placeholder: "60"
+    validations:
+      required: true
+
+  - type: textarea
+    id: content
+    attributes:
+      label: 学習内容
+      description: 具体的に何を学習したか記入してください。
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: タグ（カンマ区切り）
+      description: (任意) 学習内容に関連するタグをカンマ区切りで入力します。
+
+  - type: textarea
+    id: materials
+    attributes:
+      label: 教材
+      description: |-
+        (任意) 使用した教材を記録します。1行に1教材を以下のフォーマットで入力してください。
+        `タイプ:名前:詳細`
+        - **タイプ**: `book`, `url`, `video` など
+        - **名前**: 書籍名やサイト名
+        - **詳細**: 章やURLなど
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: メモ
+      description: (任意) 気づきや感想などを自由に残してください。
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: 難易度 (1-5)
+      description: (任意) 学習内容の難易度を5段階で評価してください。（1:簡単 〜 5:難しい）
+      options:
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+        - "5"
+
+  - type: dropdown
+    id: satisfaction
+    attributes:
+      label: 満足度 (1-5)
+      description: (任意) 学習の満足度を5段階で評価してください。（1:不満 〜 5:満足）
+      options:
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+        - "5"
