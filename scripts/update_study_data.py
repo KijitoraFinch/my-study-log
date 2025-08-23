@@ -39,7 +39,7 @@ def parse_issue_body(body, id_to_label):
 
     for field_id, label in id_to_label.items():
         escaped_label = escape_for_regex(label)
-        pattern = f"### {escaped_label}\s*\n\s*(.*?)(?=\n###|$)"
+        pattern = f"### {escaped_label}\\s*\n\\s*(.*?)(?=\n###|$)"
         match = re.search(pattern, body, re.DOTALL)
         
         value = None
@@ -107,7 +107,9 @@ def update_weekly_minutes(study_data):
     weekly_minutes = [0] * 7
 
     for session in study_data.get("sessions", []):
-        session_time = datetime.fromisoformat(session["timestamp"]).astimezone(tz)
+        # Normalize timestamp format - replace 'Z' suffix with '+00:00' for Python 3.10 compatibility
+        timestamp = session["timestamp"].replace("Z", "+00:00")
+        session_time = datetime.fromisoformat(timestamp).astimezone(tz)
         if session_time >= start_of_week:
             day_index = session_time.weekday() # Monday is 0
             duration = session.get("duration", 0) or 0
