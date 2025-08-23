@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "metadata": {
-    "created": "2025-08-22T00:00:00Z",
+    "created": "2025-08-22T00:00:00",
     "lastUpdated": "2025-08-22T16:20:20.444870",
     "totalSessions": 3,
     "totalMinutes": 80
@@ -193,7 +193,7 @@
     },
     {
       "id": 2,
-      "timestamp": "2025-08-22T06:36:42.483Z",
+      "timestamp": "2025-08-22T06:36:42.483",
       "subject": "数学C",
       "goalId": null,
       "duration": 25,
