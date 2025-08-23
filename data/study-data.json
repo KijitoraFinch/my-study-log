@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00",
-    "lastUpdated": "2025-08-23T13:40:46.537801",
-    "totalSessions": 4,
-    "totalMinutes": 105
+    "lastUpdated": "2025-08-23T14:14:46.967768",
+    "totalSessions": 5,
+    "totalMinutes": 140
   },
   "subjects": {
     "数学I": {
@@ -20,7 +20,7 @@
       "category": "math",
       "color": "#4CAF50",
       "icon": "📈",
-      "totalMinutes": 0,
+      "totalMinutes": 35,
       "goals": []
     },
     "数学III": {
@@ -234,6 +234,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 8,
+      "timestamp": "2025-08-23T14:14:35+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/8",
+      "subject": "数学II",
+      "goalId": "None",
+      "duration": 35,
+      "content": "hoge",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {
@@ -248,7 +262,7 @@
       0,
       0,
       25,
-      80,
+      115,
       0
     ],
     "monthlyMinutes": {},
