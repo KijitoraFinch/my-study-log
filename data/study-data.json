@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00",
-    "lastUpdated": "2025-08-22T16:20:20.444870",
-    "totalSessions": 3,
-    "totalMinutes": 80
+    "lastUpdated": "2025-08-23T13:40:46.537801",
+    "totalSessions": 4,
+    "totalMinutes": 105
   },
   "subjects": {
     "数学I": {
@@ -139,7 +139,7 @@
       "category": "science",
       "color": "#009688",
       "icon": "🧪",
-      "totalMinutes": 30,
+      "totalMinutes": 55,
       "goals": []
     },
     "歴史総合": {
@@ -220,6 +220,20 @@
       "difficulty": null,
       "satisfaction": "",
       "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/3"
+    },
+    {
+      "id": 7,
+      "timestamp": "2025-08-23T13:40:35+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/7",
+      "subject": "化学基礎/化学",
+      "goalId": "None",
+      "duration": 25,
+      "content": "キエー",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {
@@ -233,8 +247,8 @@
       0,
       0,
       0,
-      0,
-      0,
+      25,
+      80,
       0
     ],
     "monthlyMinutes": {},
