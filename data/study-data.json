@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00",
-    "lastUpdated": "2025-08-23T14:14:46.967768",
-    "totalSessions": 5,
-    "totalMinutes": 140
+    "lastUpdated": "2025-08-23T15:50:07.931266",
+    "totalSessions": 6,
+    "totalMinutes": 225
   },
   "subjects": {
     "数学I": {
@@ -12,7 +12,7 @@
       "category": "math",
       "color": "#4CAF50",
       "icon": "📈",
-      "totalMinutes": 0,
+      "totalMinutes": 85,
       "goals": []
     },
     "数学II": {
@@ -248,6 +248,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 9,
+      "timestamp": "2025-08-23T15:49:57+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/9",
+      "subject": "数学I",
+      "goalId": "None",
+      "duration": 85,
+      "content": "模試の過去問をやってみた。意外と時間が厳しい。（普通に演習をしろ案件ではある）",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {
@@ -263,7 +277,7 @@
       0,
       25,
       115,
-      0
+      85
     ],
     "monthlyMinutes": {},
     "subjectDistribution": {},
