@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00",
-    "lastUpdated": "2025-08-23T15:50:07.931266",
-    "totalSessions": 6,
-    "totalMinutes": 225
+    "lastUpdated": "2025-08-24T11:40:37.595825",
+    "totalSessions": 7,
+    "totalMinutes": 245
   },
   "subjects": {
     "数学I": {
@@ -60,7 +60,7 @@
       "category": "japanese",
       "color": "#9C27B0",
       "icon": "📜📖",
-      "totalMinutes": 25,
+      "totalMinutes": 45,
       "goals": []
     },
     "古文": {
@@ -262,6 +262,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 10,
+      "timestamp": "2025-08-24T11:40:26+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/10",
+      "subject": "古文単語",
+      "goalId": "2025-first-semester-final",
+      "duration": 20,
+      "content": "くるち",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {
@@ -277,7 +291,7 @@
       0,
       25,
       115,
-      85
+      105
     ],
     "monthlyMinutes": {},
     "subjectDistribution": {},
