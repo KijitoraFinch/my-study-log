@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00",
-    "lastUpdated": "2025-08-24T11:40:37.595825",
-    "totalSessions": 7,
-    "totalMinutes": 245
+    "lastUpdated": "2025-08-27T17:59:35.215616",
+    "totalSessions": 8,
+    "totalMinutes": 285
   },
   "subjects": {
     "数学I": {
@@ -44,7 +44,7 @@
       "category": "math",
       "color": "#2196F3",
       "icon": "➡️",
-      "totalMinutes": 0,
+      "totalMinutes": 40,
       "goals": []
     },
     "数学C": {
@@ -276,6 +276,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 11,
+      "timestamp": "2025-08-27T17:59:22+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/11",
+      "subject": "数学B",
+      "goalId": "None",
+      "duration": 40,
+      "content": "矢印こねこね",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {
@@ -288,10 +302,10 @@
       0,
       0,
       0,
+      40,
       0,
-      25,
-      115,
-      105
+      0,
+      0
     ],
     "monthlyMinutes": {},
     "subjectDistribution": {},
