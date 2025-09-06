@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00",
-    "lastUpdated": "2025-08-30T08:55:11.156901",
-    "totalSessions": 11,
-    "totalMinutes": 375
+    "lastUpdated": "2025-09-06T17:20:29.051601",
+    "totalSessions": 12,
+    "totalMinutes": 420
   },
   "subjects": {
     "数学I": {
@@ -147,7 +147,7 @@
       "category": "social",
       "color": "#FF9800",
       "icon": "🏛️",
-      "totalMinutes": 0,
+      "totalMinutes": 45,
       "goals": []
     },
     "公共": {
@@ -332,6 +332,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 15,
+      "timestamp": "2025-09-06T17:20:17+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/15",
+      "subject": "歴史総合",
+      "goalId": "2025-first-semester-final",
+      "duration": 45,
+      "content": "てか副教科も選択肢にいれるべきかもしれないですね",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {
@@ -344,10 +358,10 @@
       0,
       0,
       0,
-      65,
       0,
-      65,
-      0
+      0,
+      0,
+      45
     ],
     "monthlyMinutes": {},
     "subjectDistribution": {},
