@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-08-22T00:00:00",
-    "lastUpdated": "2025-09-07T10:45:25.833840",
-    "totalSessions": 13,
-    "totalMinutes": 480
+    "lastUpdated": "2025-09-08T18:12:36.526025",
+    "totalSessions": 14,
+    "totalMinutes": 540
   },
   "subjects": {
     "数学I": {
@@ -131,7 +131,7 @@
       "category": "science",
       "color": "#00BCD4",
       "icon": "🌍",
-      "totalMinutes": 60,
+      "totalMinutes": 120,
       "goals": []
     },
     "化学基礎/化学": {
@@ -360,6 +360,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 17,
+      "timestamp": "2025-09-08T18:12:22+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/17",
+      "subject": "地学基礎/地学",
+      "goalId": "2025-first-semester-final",
+      "duration": 60,
+      "content": "「流紋岩質」と「安山岩質」の間に、「デイサイト質」が沢山ある（画像略）",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {
@@ -370,12 +384,12 @@
   "analytics": {
     "weeklyMinutes": [
       0,
+      60,
       0,
       0,
       0,
       0,
-      0,
-      105
+      0
     ],
     "monthlyMinutes": {},
     "subjectDistribution": {},
