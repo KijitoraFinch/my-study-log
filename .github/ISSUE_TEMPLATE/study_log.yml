@@ -39,6 +39,7 @@ body:
     - ''
     - 英文法参考書 3周 (eng-grammar-master)
     - 2025-前期末 (2025-first-semester-final)
+    - 2025-前期中間（2025-second-semester-mid）
 - type: input
   id: duration
   attributes:
