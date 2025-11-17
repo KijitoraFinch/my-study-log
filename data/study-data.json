@@ -171,8 +171,14 @@
       "id": "2025-first-semester-final",
       "title": "2025-前期末",
       "targetHours": null,
-      "status": "active"
-    }
+      "status": "inactive"
+    },
+    {
+      "id": "2025-second-semester-mid",
+      "title": "2025-後期中間",
+      "targetHours": null,
+      "status": "active",
+    },
   ],
   "sessions": [
     {
