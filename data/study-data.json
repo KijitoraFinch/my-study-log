@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-11-17T11:52:13.166338",
-    "totalSessions": 2,
-    "totalMinutes": 50,
-    "lastUpdated": "2025-11-20T09:25:15.798820"
+    "totalSessions": 3,
+    "totalMinutes": 75,
+    "lastUpdated": "2025-11-20T11:39:22.582092"
   },
   "subjects": {},
   "goals": [],
@@ -36,6 +36,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 20,
+      "timestamp": "2025-11-20T11:39:05+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/20",
+      "subject": "化学基礎/化学",
+      "goalId": "None",
+      "duration": 25,
+      "content": "ぱそー",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {},
@@ -45,7 +59,7 @@
       25,
       0,
       0,
-      25,
+      50,
       0,
       0,
       0
