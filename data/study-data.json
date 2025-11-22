@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-11-17T11:52:13.166338",
-    "totalSessions": 3,
-    "totalMinutes": 75,
-    "lastUpdated": "2025-11-20T11:39:22.582092"
+    "totalSessions": 4,
+    "totalMinutes": 100,
+    "lastUpdated": "2025-11-22T17:56:36.126864"
   },
   "subjects": {},
   "goals": [],
@@ -50,6 +50,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 21,
+      "timestamp": "2025-11-22T17:56:20+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/21",
+      "subject": "数学I",
+      "goalId": "2025-second-semester-mid",
+      "duration": 25,
+      "content": "デス化学では水が電離しないので酸を薄めまくるとpHが7を超える",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {},
@@ -61,7 +75,7 @@
       0,
       50,
       0,
-      0,
+      25,
       0
     ]
   }
