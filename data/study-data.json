@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-11-17T11:52:13.166338",
-    "totalSessions": 6,
-    "totalMinutes": 210,
-    "lastUpdated": "2025-11-24T10:30:28.972919"
+    "totalSessions": 7,
+    "totalMinutes": 235,
+    "lastUpdated": "2025-11-24T12:25:57.849410"
   },
   "subjects": {},
   "goals": [],
@@ -92,13 +92,27 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 24,
+      "timestamp": "2025-11-24T12:25:46+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/24",
+      "subject": "化学基礎/化学",
+      "goalId": "2025-first-semester-final",
+      "duration": 25,
+      "content": "弱酸/弱塩基の塩であることは酸性/塩基性塩であることの必要条件でも十分条件でもない←ワオ",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {},
   "achievements": [],
   "analytics": {
     "weeklyMinutes": [
-      110,
+      135,
       0,
       0,
       0,
