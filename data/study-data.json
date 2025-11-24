@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-11-17T11:52:13.166338",
-    "totalSessions": 5,
-    "totalMinutes": 150,
-    "lastUpdated": "2025-11-24T10:30:01.062852"
+    "totalSessions": 6,
+    "totalMinutes": 210,
+    "lastUpdated": "2025-11-24T10:30:28.972919"
   },
   "subjects": {},
   "goals": [],
@@ -78,13 +78,27 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 23,
+      "timestamp": "2025-11-24T10:30:16+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/23",
+      "subject": "地学基礎/地学",
+      "goalId": "None",
+      "duration": 60,
+      "content": "大気とか",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {},
   "achievements": [],
   "analytics": {
     "weeklyMinutes": [
-      50,
+      110,
       0,
       0,
       0,
