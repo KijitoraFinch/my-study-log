@@ -2,9 +2,9 @@
   "version": "1.0",
   "metadata": {
     "created": "2025-11-17T11:52:13.166338",
-    "totalSessions": 8,
-    "totalMinutes": 285,
-    "lastUpdated": "2025-11-24T13:22:29.268627"
+    "totalSessions": 9,
+    "totalMinutes": 310,
+    "lastUpdated": "2025-11-25T10:41:35.107874"
   },
   "subjects": {},
   "goals": [],
@@ -120,6 +120,20 @@
       "notes": null,
       "difficulty": null,
       "satisfaction": null
+    },
+    {
+      "id": 26,
+      "timestamp": "2025-11-25T10:41:23+00:00",
+      "issueUrl": "https://github.com/KijitoraFinch/my-study-log/issues/26",
+      "subject": "化学基礎/化学",
+      "goalId": "2025-second-semester-mid",
+      "duration": 25,
+      "content": "ルイス!ルイス!ルイス!ルイスぅぅうううわぁああああああああああああああああああああああん!!!\n（アレニウスの定義とブレンステッド-ローリーの定義の他にも酸と塩基の定義が存在するらしい。何？）",
+      "tags": [],
+      "materials": [],
+      "notes": null,
+      "difficulty": null,
+      "satisfaction": null
     }
   ],
   "config": {},
@@ -127,7 +141,7 @@
   "analytics": {
     "weeklyMinutes": [
       185,
-      0,
+      25,
       0,
       0,
       0,
